@@ -3,11 +3,9 @@ body {
   margin: 0;
   min-height: 100%;
   font-family: "Poppins", sans-serif;
-
+  padding-top: 70px;
   background: linear-gradient(180deg, #09070f, #181029, #09070f);
-
   color: white;
-
   overflow-x: hidden;
 }
 
@@ -81,16 +79,14 @@ body::before {
 
 .hero {
   height: 100vh;
-
   display: flex;
-
   flex-direction: column;
-
   justify-content: center;
-
   align-items: center;
-
   text-align: center;
+  padding-top: 70px;
+  box-sizing: border-box;
+  margin-top: -70px;
 }
 
 h1 {
@@ -209,4 +205,34 @@ h1 {
 
 .hidden {
   display: none;
+}
+
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 15px;
+  background: rgba(10, 10, 20, 0.6);
+  backdrop-filter: blur(12px);
+  z-index: 1000;
+  height: 70px;
+}
+
+.site-nav a {
+  color: white;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  padding: 8px 18px;
+  border-radius: 30px;
+  transition: 0.3s;
+}
+
+.site-nav a:hover {
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 20px #cdb4ff;
+  transform: translateY(-3px);
 }
