@@ -1,102 +1,210 @@
-
+html,
 body {
-  background: ge
-  background-size: cover;
-  background-attachment:fixed;
-  background-repeat: no-repeat;
-  color: #88a0bf;
-  font-family: "cheap-pine", sans-serif;
   margin: 0;
-  padding: 0;
+  min-height: 100%;
+  font-family: "Poppins", sans-serif;
+
+  background: linear-gradient(180deg, #09070f, #181029, #09070f);
+
+  color: white;
+
+  overflow-x: hidden;
 }
 
-/* NAV */
-.navbar {
-  background: #29334f;
-}
+/* stars */
 
-/* CARD */
-.card-box {
-  background: #29334f;
-  border-radius: 15px;
-  padding: 15px;
-  margin: 10px;
-  transition: all 0.35s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-/* FLOAT HOVER */
-.card-box:hover {
-  transform: translateY(-10px) scale(1.03);
-  box-shadow: 0 0 25px rgba(136,160,191,0.5);
-}
-
-/* SHIMMER EFFECT */
-.card-box::before {
+body::before {
   content: "";
-  position: absolute;
-  top: 0;
-  left: -75%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent);
-  transform: skewX(-20deg);
+
+  position: fixed;
+
+  width: 200%;
+  height: 200%;
+
+  background-image: radial-gradient(white 1px, transparent 1px);
+
+  background-size: 100px 100px;
+
+  opacity: 0.4;
+
+  animation: moveStars 100s linear infinite;
+
+  z-index: -2;
 }
 
-.card-box:hover::before {
-  left: 130%;
-  transition: 0.6s;
+@keyframes moveStars {
+  from {
+    transform: translate(0, 0);
+  }
+
+  to {
+    transform: translate(-300px, -300px);
+  }
 }
 
-/* IMAGE ZOOM */
+/* shooting stars */
+
+.shooting-star {
+  position: fixed;
+
+  width: 2px;
+  height: 100px;
+
+  background: linear-gradient(white, transparent);
+
+  transform: rotate(45deg);
+
+  animation: shoot 8s linear infinite;
+}
+
+.star1 {
+  left: 10%;
+}
+.star2 {
+  left: 50%;
+  animation-delay: 3s;
+}
+.star3 {
+  left: 80%;
+  animation-delay: 6s;
+}
+
+@keyframes shoot {
+  from {
+    transform: translate(0, 0) rotate(45deg);
+  }
+
+  to {
+    transform: translate(700px, 900px) rotate(45deg);
+  }
+}
+
+.hero {
+  height: 100vh;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  text-align: center;
+}
+
+h1 {
+  font-size: 4rem;
+
+  font-weight: 500;
+
+  background: linear-gradient(90deg, white, #cdb4ff, #88a0bf);
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.filter-btn,
+.main-btn,
+.more-btn {
+  border: none;
+
+  padding: 12px 25px;
+
+  border-radius: 40px;
+
+  color: white;
+
+  background: rgba(255, 255, 255, 0.1);
+
+  margin: 6px;
+
+  transition: 0.5s;
+}
+
+.filter-btn:hover,
+.main-btn:hover,
+.more-btn:hover {
+  transform: translateY(-8px) scale(1.08);
+
+  box-shadow: 0 0 20px #cdb4ff;
+}
+
+.card-box {
+  background: rgba(255, 255, 255, 0.08);
+
+  padding: 20px;
+
+  border-radius: 25px;
+
+  margin: 15px;
+
+  transition: 0.5s;
+
+  backdrop-filter: blur(10px);
+}
+
+.card-box:hover {
+  transform: translateY(-15px) scale(1.05) rotateY(8deg);
+}
+
 .card-box img {
   width: 100%;
-  border-radius: 10px;
-  transition: 0.3s ease;
-}
 
-.card-box:hover img {
-  transform: scale(1.08);
-}
-
-/* ELEMENT GLOWS */
-.fire { box-shadow: 0 0 15px #ff4d4d; }
-.earth { box-shadow: 0 0 15px #82a17b; }
-.air { box-shadow: 0 0 15px #88a0bf; }
-.water { box-shadow: 0 0 15px #4da6ff; }
-
-/* BUTTONS */
-.filter-btn {
-  background: #29334f;
-  color: #88a0bf;
-  border: none;
-  margin: 5px;
-  padding: 8px 14px;
   border-radius: 20px;
-  transition: 0.2s;
 }
 
-.filter-btn:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 0 12px rgba(136,160,191,0.4);
+.fire {
+  box-shadow: 0 0 20px red;
+}
+.earth {
+  box-shadow: 0 0 20px green;
+}
+.air {
+  box-shadow: 0 0 20px lightblue;
+}
+.water {
+  box-shadow: 0 0 20px blue;
 }
 
-/* MODAL */
 .modal-box {
   position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.85);
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.7);
+
   display: flex;
-  align-items: center;
+
   justify-content: center;
+  align-items: center;
 }
 
 .modal-content {
-  background: #29334f;
-  padding: 20px;
-  border-radius: 15px;
-  width: 300px;
+  width: 350px;
+
+  padding: 25px;
+
+  border-radius: 25px;
+
+  background: #151022;
+
+  text-align: center;
+}
+
+.close-x {
+  position: absolute;
+
+  top: 15px;
+  right: 25px;
+
+  font-size: 25px;
+
+  cursor: pointer;
 }
 
 .hidden {
