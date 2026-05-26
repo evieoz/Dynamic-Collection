@@ -236,3 +236,23 @@ h1 {
   box-shadow: 0 0 20px #cdb4ff;
   transform: translateY(-3px);
 }
+
+.special-badge{
+
+display:inline-block;
+
+padding:6px 12px;
+
+margin-bottom:12px;
+
+border-radius:20px;
+
+font-size:.8rem;
+
+background:rgba(255,170,100,.15);
+
+border:1px solid rgba(255,170,100,.4);
+
+box-shadow:0 0 15px orange;
+
+}

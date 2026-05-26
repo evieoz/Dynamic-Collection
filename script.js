@@ -4,7 +4,7 @@ const zodiac = [
   {
     name: "Aries",
     type: "Fire Sign",
-    image: "https://placehold.co/300x300",
+    image: "aries.png",
     rulingPlanet: "Mars",
     element: "fire",
     funFact:
@@ -14,7 +14,7 @@ const zodiac = [
   {
     name: "Taurus",
     type: "Earth Sign",
-    image: "https://placehold.co/300x300",
+    image: "taurus.png",
     rulingPlanet: "Venus",
     element: "earth",
     funFact: "Taurus is ruled by Venus, the planet of love and beauty.",
@@ -23,7 +23,7 @@ const zodiac = [
   {
     name: "Gemini",
     type: "Air Sign",
-    image: "https://placehold.co/300x300",
+    image: "gemini.png",
     rulingPlanet: "Mercury",
     element: "air",
     funFact:
@@ -33,7 +33,7 @@ const zodiac = [
   {
     name: "Cancer",
     type: "Water Sign",
-    image: "https://placehold.co/300x300",
+    image: "cancer.png",
     rulingPlanet: "Moon",
     element: "water",
     funFact:
@@ -43,7 +43,7 @@ const zodiac = [
   {
     name: "Leo",
     type: "Fire Sign",
-    image: "https://placehold.co/300x300",
+    image: "leo.png",
     rulingPlanet: "Sun",
     element: "fire",
     funFact:
@@ -53,7 +53,7 @@ const zodiac = [
   {
     name: "Virgo",
     type: "Earth Sign",
-    image: "https://placehold.co/300x300",
+    image: "virgo.png",
     rulingPlanet: "Mercury",
     element: "earth",
     funFact:
@@ -63,7 +63,7 @@ const zodiac = [
   {
     name: "Libra",
     type: "Air Sign",
-    image: "https://placehold.co/300x300",
+    image: "libra.png",
     rulingPlanet: "Venus",
     element: "air",
     funFact:
@@ -73,7 +73,7 @@ const zodiac = [
   {
     name: "Scorpio",
     type: "Water Sign",
-    image: "https://placehold.co/300x300",
+    image: "scorpio.png",
     rulingPlanet: "Pluto",
     element: "water",
     funFact: "Scorpio is known for intensity and mystery.",
@@ -82,7 +82,7 @@ const zodiac = [
   {
     name: "Sagittarius",
     type: "Fire Sign",
-    image: "https://placehold.co/300x300",
+    image: "sagittarius.png",
     rulingPlanet: "Jupiter",
     element: "fire",
     funFact: "Sagittarius represents adventure and exploration.",
@@ -91,7 +91,7 @@ const zodiac = [
   {
     name: "Capricorn",
     type: "Earth Sign",
-    image: "https://placehold.co/300x300",
+    image: "capricorn.png",
     rulingPlanet: "Saturn",
     element: "earth",
     funFact: "Capricorn represents ambition and discipline.",
@@ -100,7 +100,7 @@ const zodiac = [
   {
     name: "Aquarius",
     type: "Air Sign",
-    image: "https://placehold.co/300x300",
+    image: "aqua.png",
     rulingPlanet: "Uranus",
     element: "air",
     funFact: "Aquarius is innovative and independent.",
@@ -109,7 +109,7 @@ const zodiac = [
   {
     name: "Pisces",
     type: "Water Sign",
-    image: "https://placehold.co/300x300",
+    image: "pisces.png",
     rulingPlanet: "Neptune",
     element: "water",
     funFact: "Pisces is imaginative and emotional.",
@@ -131,13 +131,31 @@ function render(list) {
   container.innerHTML = "";
 
   list.forEach((item) => {
-    let card = document.createElement("div");
 
-    card.className = "col-lg-3 col-md-4 col-sm-6";
+let card = document.createElement("div");
 
-    card.innerHTML = `
+card.className = "col-lg-3 col-md-4 col-sm-6";
+
+
+let featuredBadge = "";
+
+/* CONDITIONAL INSIDE forEach() */
+
+if(item.element === "fire"){
+
+featuredBadge = `
+<div class="special-badge">
+🔥 Powerful Sign
+</div>
+`;
+
+}
+
+card.innerHTML = `
 
 <div class="card-box ${item.element}">
+
+${featuredBadge}
 
 <img src="${item.image}">
 
@@ -153,6 +171,26 @@ function render(list) {
 
 `;
 
+container.appendChild(card);
+
+const btn = card.querySelector(".more-btn");
+
+btn.addEventListener("click",()=>{
+
+modalTitle.textContent=item.name;
+modalImage.src=item.image;
+modalType.textContent=item.type;
+modalPlanet.textContent=
+"Ruling Planet: " + item.rulingPlanet;
+
+modalDetail.textContent=item.funFact;
+
+modal.classList.remove("hidden");
+
+});
+
+});
+
     container.appendChild(card);
 
     const btn = card.querySelector(".more-btn");
@@ -166,8 +204,7 @@ function render(list) {
 
       modal.classList.remove("hidden");
     });
-  });
-}
+  };
 
 document.getElementById("closeModal").addEventListener("click", () => {
   modal.classList.add("hidden");
